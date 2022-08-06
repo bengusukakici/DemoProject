@@ -10,15 +10,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.isFinish = false;
         swerveInputSystem = GetComponent<InputManager>();
         animation = GetComponent<PlayerAnim>();
     }
 
     private void Update()
     {
-        if (true)
+        MovementAndSwerwe();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Finish"))
         {
-            MovementAndSwerwe();
+            GameManager.instance.isFinish = true;
         }
     }
 
@@ -26,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         #region Swerwe Movement
         float swerveAmount = Time.deltaTime * _inputData.swerveSpeed * swerveInputSystem.MoveFactorX;
-        swerveAmount = Mathf.Clamp(swerveAmount, -_inputData.maxSwerveAmount, _inputData.maxSwerveAmount);
+        var pos = transform.localPosition;
+        pos.x = Mathf.Clamp(transform.localPosition.x, -5, 5);
+        transform.localPosition = pos;
         transform.Translate(swerveAmount, 0, 0);
         #endregion
 

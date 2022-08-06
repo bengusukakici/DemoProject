@@ -15,3 +15,4 @@ MonoBehaviour:
   swerveSpeed: 3
   maxSwerveAmount: 4
   speed: 4
+  clamp: 0
