@@ -8,7 +8,8 @@ public class InputData : ScriptableObject
     public float swerveSpeed;
     public float maxSwerveAmount;
     public float speed;
-    public float clamp;
+    public float clampX;
+    public float clampY;
 
 }
 

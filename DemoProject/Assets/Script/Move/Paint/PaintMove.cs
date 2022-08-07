@@ -1,35 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PaintMove : MonoBehaviour
 {
-    private PaintInputManager swerveInputSystem;
-    [SerializeField] PaintInputData _inputData;
+    private InputManager swerveInputSystem;
+    [SerializeField] InputData _inputData;
 
     private void Start()
     {
-        swerveInputSystem = GetComponent<PaintInputManager>();
+        swerveInputSystem = GetComponent<InputManager>();
     }
 
     private void Update()
     {
         if (GameManager.instance.isFinish) 
         {
-            Debug.Log("finish");
             MovementAndSwerwe(); 
         }
-        
     }
 
     void MovementAndSwerwe()
     {
+        if (Input.GetMouseButton(0))
+        {
+            transform.DOMoveZ(133, 0.5f);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            transform.DOMoveZ(131, 0.5f);
+        }
         #region Swerwe Movement
         var pos = transform.localPosition;
-        float swerveAmount = Time.deltaTime * _inputData.swerveSpeed * swerveInputSystem.MoveFactorX;
-        pos.x = Mathf.Clamp(transform.localPosition.x, -3.5f, 3.5f);
+        float swerveAmountX = Time.deltaTime * _inputData.swerveSpeed * swerveInputSystem.MoveFactorX;
+        pos.x = Mathf.Clamp(transform.localPosition.x, -_inputData.clampX, _inputData.clampX);
         transform.localPosition = pos;
-        transform.Translate(swerveAmount, 0, 0);
+        transform.Translate(swerveAmountX, 0, 0);
         
         float swerveAmountY = Time.deltaTime * _inputData.swerveSpeed * swerveInputSystem.MoveFactorY;
         var posY = transform.localPosition;

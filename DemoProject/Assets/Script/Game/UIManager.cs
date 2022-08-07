@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private Slider gameSlider;
+    [SerializeField] private GameObject pie;
+    [SerializeField] private GameObject joystick;
 
     [Header("Fail Panel")]
     public GameObject failPanel;
@@ -61,6 +63,8 @@ public class UIManager : MonoBehaviour
         instance = this;
         victoryPanel.SetActive(false);
         failPanel.SetActive(false);
+        pie.SetActive(false);
+        joystick.SetActive(false);
     }
 
     void Start()
@@ -78,7 +82,15 @@ public class UIManager : MonoBehaviour
     {
         GlowTurn();
         ScaleButton(nextButton);
-        
+        if (GameManager.instance.isFinish)
+        {
+            pie.SetActive(true);
+        }
+        if (GameManager.instance.isRotatingFinish)
+        {
+            joystick.SetActive(true);
+        }
+
     }
 
     public void StartLevel()

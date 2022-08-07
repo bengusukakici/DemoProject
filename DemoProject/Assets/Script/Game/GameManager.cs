@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public GameObject player;
+    public List<GameObject> opponent;
     public bool isFinish;
+    public bool isRotatingFinish;
     PlayerMovement playerMovement;
     PlayerAnim animation;
     private void Awake()
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        isFinish = false;
+        isRotatingFinish = false;
         playerMovement = player.GetComponent<PlayerMovement>();
         animation = player.GetComponent<PlayerAnim>();
     }

@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &48970346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4976327015254986948, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
+  m_PrefabInstance: {fileID: 1115019691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647916435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &89988164
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +920,11 @@ Transform:
   m_Father: {fileID: 1451804894}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &647916435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4976327015254986944, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
+  m_PrefabInstance: {fileID: 1115019691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804564754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1703,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4683662404435042550}
+  opponent: []
   isFinish: 0
+  isRotatingFinish: 0
 --- !u!4 &1100798261
 Transform:
   m_ObjectHideFlags: 0
@@ -1709,34 +1727,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 272416499843922294, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899585384122144406, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3271038254874620812, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3271038254874620812, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3271038254874620812, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3271038254874620812, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4499916610234081563, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 3296221746826842276, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 647916435}
     - target: {fileID: 4697872815977765592, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1824,14 +1818,6 @@ PrefabInstance:
     - target: {fileID: 4697872815977765596, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4697872815977765596, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4788428734473445341, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
@@ -2278,7 +2264,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 1264208034}
-  cooldown: -825.6906
+  cooldown: -894.2066
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -3587,7 +3573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917054377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 133}
+  m_LocalPosition: {x: 0, y: 2, z: 131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3602,7 +3588,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917054377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e53b9f02acaa74bb6c89ae8513b68a, type: 3}
+  m_Script: {fileID: 11500000, guid: f1e5b514ca68547448472009fdf8b3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1917054385
@@ -3617,7 +3603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a9c0076347724eb6d60e793d39e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputData: {fileID: 11400000, guid: d26bced54ab89eb4bb8ce9ed0aa27737, type: 2}
+  _inputData: {fileID: 11400000, guid: 46336c6162309c543ab2f8bdb3e553f3, type: 2}
 --- !u!114 &1917054386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4432,8 +4418,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dcc278e62df51454e904fbbdb0d2a031, type: 2}
-  - {fileID: 2100000, guid: dcc278e62df51454e904fbbdb0d2a031, type: 2}
+  - {fileID: 2100000, guid: f156010c814e7274c9b5f6bdb8cddd1f, type: 2}
+  - {fileID: 2100000, guid: f156010c814e7274c9b5f6bdb8cddd1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4689,6 +4675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputData: {fileID: 11400000, guid: 46336c6162309c543ab2f8bdb3e553f3, type: 2}
   animation: {fileID: 0}
+  joystick: {fileID: 48970346}
+  rb: {fileID: 0}
 --- !u!95 &4683662404435042553
 Animator:
   serializedVersion: 3
