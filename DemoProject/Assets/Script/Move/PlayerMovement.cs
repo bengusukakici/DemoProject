@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class PlayerMovement : MonoBehaviour
     public FloatingJoystick joystick; 
     public Rigidbody rb;
 
+    NavMeshAgent navMeshAgent;
+    Vector3 target;
+
     private void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         swerveInputSystem = GetComponent<InputManager>();
         animation = GetComponent<PlayerAnim>(); 
         rb = gameObject.GetComponent<Rigidbody>();
@@ -19,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isRotatingFinish)
+        if (GameManager.instance.isRotatingPlatform)
         {
-            FinishMovementJoystick();
+            MovementJoystick();
         }
         else
         {
@@ -36,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.transform.CompareTag("RotatingFinish"))
         {
-            GameManager.instance.isRotatingFinish = true;
+            GameManager.instance.isRotatingPlatform = true;
         }
     }
 
@@ -55,8 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            target = new Vector3(swerveAmount, transform.position.y, transform.position.z);
             transform.Translate(Vector3.forward * Time.deltaTime * _inputData.speed);
-            
+            //navMeshAgent.SetDestination(-target);
+
             animation.run();
         }
         else
@@ -65,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    void FinishMovementJoystick()
+    void MovementJoystick()
     {
         if (Input.GetMouseButton(0))
         {

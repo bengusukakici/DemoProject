@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerAnim : MonoBehaviour
 {
@@ -21,5 +22,26 @@ public class PlayerAnim : MonoBehaviour
     {
         animator.SetBool("isRun", false);
     }
-
+    public void fall()
+    {
+        animator.SetTrigger("isFall");
+    }
+    public void RestartMove()
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            Debug.Log("restart");
+            transform.position = new Vector3(0, 0, 0);
+            gameObject.GetComponent<PlayerMovement>().enabled = true;
+            gameObject.GetComponent<MeshCollider>().enabled = true;
+        }
+        if (gameObject.CompareTag("Opponent"))
+        {
+            Debug.Log("restart");
+            transform.position = new Vector3(Random.Range(-4,4), 0, 0);
+            gameObject.GetComponent<NavMesh>().enabled = true;
+            gameObject.GetComponent<MeshCollider>().enabled = true;
+            gameObject.GetComponent<NavMeshAgent>().speed = 4; 
+        }
+    }
 }

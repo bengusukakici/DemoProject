@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
         {
             pie.SetActive(true);
         }
-        if (GameManager.instance.isRotatingFinish)
+        if (GameManager.instance.isRotatingPlatform)
         {
             joystick.SetActive(true);
         }
