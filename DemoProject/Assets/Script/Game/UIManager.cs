@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject startPanel;
 
     private static UIManager instance;
 
@@ -26,37 +25,30 @@ public class UIManager : MonoBehaviour
     }
 
 
+    [Header("Start Panel")]
+    [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject startButton;
+
     [Header("In Game Panel")]
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private Slider gameSlider;
     [SerializeField] private GameObject pie;
     [SerializeField] private GameObject joystick;
 
     [Header("Fail Panel")]
     public GameObject failPanel;
-    [SerializeField] private GameObject FailGlow;
+    [SerializeField] private GameObject failButton;
 
     [Header("Victory Panel")]
     public GameObject victoryPanel;
-    [SerializeField] private GameObject VictoryGlow;
     [SerializeField] private GameObject nextButton;
-    [SerializeField] private GameObject claimButton;
-    [SerializeField] private GameObject adv;
-    [SerializeField] private TextMeshProUGUI advText;
-
 
     [Header("Button Scale Animation Settings")]
     [SerializeField] float buttonScaleAnimationSpeed = 0.3f;
     [SerializeField] float buttonScaleAnimationLength = 0.2f;
     [SerializeField] float buttonScaleAnimationStartPosition = 0.8f;
 
-    [Header("Glow Turn Animation Settings")]
-
-    [SerializeField] private float glowSpeed = 50;
-
-
+    PlayerMovement playerMovement;
 
     private void Awake()
     {
@@ -70,18 +62,18 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         levelText.text = "Level" + PlayerPrefs.GetInt("lastLevel", 1).ToString();
+        playerMovement = GameManager.instance.player.GetComponent<PlayerMovement>();
         if (FindObjectOfType<EventSystem>() == null)
         {
             var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         }
-
-
-
+        InvokeRepeating("StartPanel", 0.00f, 0.01f);
     }
     public void Update()
     {
-        GlowTurn();
+        ScaleButton(startButton);
         ScaleButton(nextButton);
+        ScaleButton(failButton);
         if (GameManager.instance.isFinish)
         {
             pie.SetActive(true);
@@ -92,12 +84,26 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
+    public void StartPanel()
+    {
+        startPanel.SetActive(true);
+        playerMovement.enabled = false;
+        foreach(NavMesh script in GameManager.instance.opponentScript)
+        {
+            script.enabled = false;
+        }
+        CancelInvoke("StartPanel");
+    }
     public void StartLevel()
     {
-
+        startPanel.SetActive(false);
+        playerMovement.enabled = true; 
+        foreach (NavMesh script in GameManager.instance.opponentScript)
+        {
+            script.enabled = true;
+        }
     }
-    /*
+    
     public void NextLevel()
     {
         LevelManager.Instance.NextLevel();
@@ -106,22 +112,11 @@ public class UIManager : MonoBehaviour
     {
         LevelManager.Instance.LevelRestart();
     }
-    */
     
     public void OpenStore()
     {
 
     }
-
-    void GlowTurn()
-    {
-        var rotationVector = VictoryGlow.transform.rotation.eulerAngles;
-        rotationVector.z += Time.deltaTime * glowSpeed;
-        VictoryGlow.transform.rotation = Quaternion.Euler(rotationVector);
-        FailGlow.transform.rotation = Quaternion.Euler(rotationVector);
-
-    }
-
     void ScaleButton(GameObject button)
     {
         float t = Time.time * buttonScaleAnimationSpeed;

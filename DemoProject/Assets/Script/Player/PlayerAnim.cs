@@ -31,14 +31,14 @@ public class PlayerAnim : MonoBehaviour
         if (gameObject.CompareTag("Player"))
         {
             Debug.Log("restart");
-            transform.position = new Vector3(0, 0, 0);
+            transform.localPosition = new Vector3(0, 0, 0);
             gameObject.GetComponent<PlayerMovement>().enabled = true;
             gameObject.GetComponent<MeshCollider>().enabled = true;
         }
         if (gameObject.CompareTag("Opponent"))
         {
             Debug.Log("restart");
-            transform.position = new Vector3(Random.Range(-4,4), 0, 0);
+            transform.localPosition = new Vector3(Random.Range(-4,4), 0, 0);
             gameObject.GetComponent<NavMesh>().enabled = true;
             gameObject.GetComponent<MeshCollider>().enabled = true;
             gameObject.GetComponent<NavMeshAgent>().speed = 4; 

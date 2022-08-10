@@ -25,7 +25,7 @@ public class PaintMove : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            transform.DOMoveZ(133, 0.5f);
+            transform.DOMoveZ(133.5f, 0.5f);
         }
         if (Input.GetMouseButtonUp(0))
         {

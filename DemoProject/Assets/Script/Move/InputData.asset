@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72c9e0d69a821d43bea1bbda9496fad, type: 3}
   m_Name: InputData
   m_EditorClassIdentifier: 
-  swerveSpeed: 3
+  swerveSpeed: 2
   maxSwerveAmount: 4
   speed: 4
   clampX: 3.5

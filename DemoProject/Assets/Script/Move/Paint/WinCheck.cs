@@ -19,7 +19,7 @@ public class WinCheck : MonoBehaviour
         if (fill.fillAmount >= 0.97f)
         {
             Debug.Log("win");
-            //LevelManager.Instance.LevelComplete();
+            LevelManager.Instance.LevelComplete();
         }
 
     }
