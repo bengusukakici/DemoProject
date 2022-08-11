@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
     [Header("In Game Panel")]
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI orderText;
     [SerializeField] private GameObject pie;
     [SerializeField] private GameObject joystick;
 
@@ -49,6 +51,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] float buttonScaleAnimationStartPosition = 0.8f;
 
     PlayerMovement playerMovement;
+    PlayerOrder playerorder;
 
     private void Awake()
     {
@@ -62,12 +65,13 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         levelText.text = "Level" + PlayerPrefs.GetInt("lastLevel", 1).ToString();
-        playerMovement = GameManager.instance.player.GetComponent<PlayerMovement>();
+        playerMovement = GameManager.instance.character.GetComponent<PlayerMovement>();
+        playerorder = GameManager.instance.character.GetComponent<PlayerOrder>();
         if (FindObjectOfType<EventSystem>() == null)
         {
             var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         }
-        InvokeRepeating("StartPanel", 0.00f, 0.01f);
+        InvokeRepeating("StartPanel", 0.00f, 0.001f);
     }
     public void Update()
     {
@@ -82,7 +86,7 @@ public class UIManager : MonoBehaviour
         {
             joystick.SetActive(true);
         }
-
+        Order();
     }
     public void StartPanel()
     {
@@ -90,7 +94,10 @@ public class UIManager : MonoBehaviour
         playerMovement.enabled = false;
         foreach(NavMesh script in GameManager.instance.opponentScript)
         {
+
+            script.animation.stoprun();
             script.enabled = false;
+            script.GetComponentInParent<NavMeshAgent>().enabled = false;
         }
         CancelInvoke("StartPanel");
     }
@@ -100,7 +107,9 @@ public class UIManager : MonoBehaviour
         playerMovement.enabled = true; 
         foreach (NavMesh script in GameManager.instance.opponentScript)
         {
+            script.animation.run();
             script.enabled = true;
+            script.GetComponentInParent<NavMeshAgent>().enabled = true;
         }
     }
     
@@ -122,6 +131,19 @@ public class UIManager : MonoBehaviour
         float t = Time.time * buttonScaleAnimationSpeed;
         button.transform.localScale = new Vector3(Mathf.PingPong(t, buttonScaleAnimationLength) + buttonScaleAnimationStartPosition, Mathf.PingPong(t, buttonScaleAnimationLength) + buttonScaleAnimationStartPosition, 1);
     }
+    public void Order()
+    {
+        if (GameManager.instance.isFinishLine)
+        {
 
+        }
+        else
+        {
+            Debug.Log(GameManager.instance.isFinishLine);
+            orderText.text = (GameManager.instance.distance.BinarySearch(playerorder.GetDistance()) + 1).ToString();
+        }
+
+        
+    }
 
 }

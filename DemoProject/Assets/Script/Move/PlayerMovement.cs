@@ -14,9 +14,11 @@ public class PlayerMovement : MonoBehaviour
     NavMeshAgent navMeshAgent;
     Vector3 target;
 
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = false;
         swerveInputSystem = GetComponent<InputManager>();
         animation = GetComponent<PlayerAnim>(); 
         rb = gameObject.GetComponent<Rigidbody>();
@@ -39,13 +41,32 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.instance.isFinish = true;
         }
+        
         if (collision.transform.CompareTag("RotatingFinish"))
         {
             GameManager.instance.isRotatingPlatform = true;
         }
+        if (collision.transform.CompareTag("BonusObstacle"))
+        {
+            navMeshAgent.enabled = true;
+        }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FinishLine"))
+        {
+            GameManager.instance.isFinishLine = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("BonusObstacle"))
+        {
+            navMeshAgent.enabled = false;
+        }
 
-    void MovementAndSwerve()
+    }
+        void MovementAndSwerve()
     {
         #region Swerwe Movement
         float swerveAmount = Time.deltaTime * _inputData.swerveSpeed * swerveInputSystem.MoveFactorX;

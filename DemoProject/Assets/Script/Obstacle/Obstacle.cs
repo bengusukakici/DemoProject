@@ -31,7 +31,7 @@ public class Obstacle : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Opponent"))
         {
-            Debug.Log("çarpýþma");
+            //Debug.Log("çarpýþma");
             collision.gameObject.GetComponent<NavMesh>().enabled = false;
             collision.gameObject.GetComponent<NavMeshAgent>().speed = 0;
             collision.gameObject.GetComponent<MeshCollider>().enabled = false;

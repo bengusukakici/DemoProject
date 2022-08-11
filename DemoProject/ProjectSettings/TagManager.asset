@@ -7,6 +7,8 @@ TagManager:
   - StaticObstacle
   - RotatingFinish
   - Opponent
+  - BonusObstacle
+  - FinishLine
   layers:
   - Default
   - TransparentFX

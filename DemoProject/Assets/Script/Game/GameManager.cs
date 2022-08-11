@@ -7,15 +7,21 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
-    public GameObject player;
+    public GameObject character;
     public List<NavMesh> opponentScript;
+    public List<PlayerOrder> player;
+    public List<float> distance;
     public bool isFinish;
+    public bool isFinishLine;
     public bool isRotatingPlatform;
     PlayerMovement playerMovement;
     PlayerAnim animation;
+
     private void Awake()
     {
         opponentScript = new List<NavMesh>();
+        player = new List<PlayerOrder>();
+        distance = new List<float>();
         if (instance == null)
         {
             instance = this;
@@ -24,9 +30,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isFinish = false;
+        isFinishLine = false;
         isRotatingPlatform = false;
-        playerMovement = player.GetComponent<PlayerMovement>();
-        animation = player.GetComponent<PlayerAnim>();
+        playerMovement = character.GetComponent<PlayerMovement>();
+        animation = character.GetComponent<PlayerAnim>();
     }
 
     void Update()
@@ -36,12 +43,7 @@ public class GameManager : MonoBehaviour
             playerMovement.enabled = false;
             animation.stoprun();
         }
+       
     }
 
-    public IEnumerator NavMeshControl()
-    {
-        yield return new WaitForSeconds(0.8f);
-        transform.GetComponent<NavMeshAgent>().enabled = false;
-        transform.GetComponent<NavMeshAgent>().enabled = true;
-    }
 }

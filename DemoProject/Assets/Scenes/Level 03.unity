@@ -430,7 +430,6 @@ GameObject:
   - component: {fileID: 95856085}
   - component: {fileID: 95856084}
   - component: {fileID: 95856083}
-  - component: {fileID: 95856089}
   m_Layer: 0
   m_Name: HorizontalObstacle
   m_TagString: Untagged
@@ -562,22 +561,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95856081}
   m_Mesh: {fileID: -8836696378809578477, guid: 6f1ba453429950944a3bef8381feb9e9, type: 3}
---- !u!54 &95856089
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95856081}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &104651347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1107,7 @@ Transform:
   - {fileID: 1329338507}
   - {fileID: 546612484}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &209834797
 Animator:
@@ -1172,7 +1155,6 @@ GameObject:
   - component: {fileID: 210091346}
   - component: {fileID: 210091345}
   - component: {fileID: 210091344}
-  - component: {fileID: 210091350}
   m_Layer: 0
   m_Name: HorizontalObstacle
   m_TagString: Untagged
@@ -1304,22 +1286,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210091342}
   m_Mesh: {fileID: -8836696378809578477, guid: 6f1ba453429950944a3bef8381feb9e9, type: 3}
---- !u!54 &210091350
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210091342}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &210215134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1702,7 @@ GameObject:
   - component: {fileID: 283905341}
   m_Layer: 0
   m_Name: RotatorRight2
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1749,7 +1715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283905335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0.7, z: 37.35}
+  m_LocalPosition: {x: 2.5, y: 0.7, z: 71}
   m_LocalScale: {x: 27, y: 20, z: 27}
   m_Children:
   - {fileID: 1895693118}
@@ -2702,6 +2668,7 @@ GameObject:
   - component: {fileID: 470864329}
   - component: {fileID: 470864330}
   - component: {fileID: 470864327}
+  - component: {fileID: 470864328}
   m_Layer: 0
   m_Name: Girl (1)
   m_TagString: Opponent
@@ -2760,7 +2727,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &470864326
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2789,8 +2756,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &470864328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470864322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!95 &470864329
 Animator:
   serializedVersion: 3
@@ -3559,13 +3540,14 @@ GameObject:
   - component: {fileID: 593120815}
   - component: {fileID: 593120814}
   - component: {fileID: 593120816}
+  - component: {fileID: 593120820}
   m_Layer: 0
   m_Name: Girl (9)
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &593120813
 Transform:
   m_ObjectHideFlags: 0
@@ -3629,7 +3611,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &593120817
 MonoBehaviour:
@@ -3665,7 +3647,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &593120819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3680,6 +3662,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &593120820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593120812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &597711336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4080,17 @@ Transform:
   m_Father: {fileID: 1480536742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696173453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 696173453, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
+  m_PrefabInstance: {fileID: 1115019691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722349133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,6 +4155,49 @@ Transform:
   m_Father: {fileID: 962043347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &750411967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 750411968}
+  - component: {fileID: 750411969}
+  m_Layer: 0
+  m_Name: OrderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &750411968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750411967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9659483, y: 0.5621439, z: 2.1361558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750411969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750411967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a265af4452a204439a8851638e1179c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756038008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,13 +4213,14 @@ GameObject:
   - component: {fileID: 756038011}
   - component: {fileID: 756038010}
   - component: {fileID: 756038012}
+  - component: {fileID: 756038016}
   m_Layer: 0
   m_Name: Girl (10)
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &756038009
 Transform:
   m_ObjectHideFlags: 0
@@ -4233,7 +4284,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &756038013
 MonoBehaviour:
@@ -4269,7 +4320,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &756038015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4284,6 +4335,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &756038016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756038008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &757187324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4362,7 +4427,7 @@ GameObject:
   - component: {fileID: 772089372}
   m_Layer: 0
   m_Name: RotatingStick (2)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4923,7 +4988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827635109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470864323}
@@ -5049,7 +5114,7 @@ GameObject:
   - component: {fileID: 851197255}
   m_Layer: 0
   m_Name: RotatingStick (1)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5557,7 +5622,7 @@ GameObject:
   - component: {fileID: 950243954}
   m_Layer: 0
   m_Name: RotatingStick
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5871,7 +5936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.19623078, y: 0, z: 0, w: 0.98055774}
-  m_LocalPosition: {x: 0, y: 3.54, z: -4.6}
+  m_LocalPosition: {x: 0, y: 3.54, z: -5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6080,7 +6145,7 @@ GameObject:
   - component: {fileID: 983558163}
   m_Layer: 0
   m_Name: RotatingStick
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6642,6 +6707,101 @@ Transform:
   m_Father: {fileID: 84827187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1024534494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024534495}
+  - component: {fileID: 1024534498}
+  - component: {fileID: 1024534497}
+  - component: {fileID: 1024534496}
+  m_Layer: 0
+  m_Name: FinishLine
+  m_TagString: FinishLine
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024534495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024534494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 125}
+  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1428296527}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1024534496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024534494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1024534497
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024534494}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1024534498
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024534494}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1060661007
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,7 +6818,7 @@ GameObject:
   - component: {fileID: 1060661013}
   m_Layer: 0
   m_Name: RotatingStick (1)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7140,9 +7300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff3699f43ca9ab4fab91db713fcc564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4683662404435042550}
+  character: {fileID: 4683662404435042550}
   opponentScript: []
+  player: []
+  distance: []
   isFinish: 0
+  isFinishLine: 0
   isRotatingPlatform: 0
 --- !u!4 &1100798261
 Transform:
@@ -7156,7 +7319,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1103888190
 GameObject:
@@ -7227,6 +7390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3296221746826842276, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
+      propertyPath: orderText
+      value: 
+      objectReference: {fileID: 696173453}
     - target: {fileID: 4697872815977765592, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7315,27 +7482,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7528963710067670732, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1115019692}
-    - target: {fileID: 7528963710067670732, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextLevel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
---- !u!114 &1115019692 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3296221746826842276, guid: 99bb0eeb11ef140cfb90ee9983a67885, type: 3}
-  m_PrefabInstance: {fileID: 1115019691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37362e0e952a6494c88d5be5d4bff30b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1117735958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7382,13 +7530,14 @@ GameObject:
   - component: {fileID: 1120128631}
   - component: {fileID: 1120128630}
   - component: {fileID: 1120128632}
+  - component: {fileID: 1120128636}
   m_Layer: 0
   m_Name: Girl (6)
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1120128629
 Transform:
   m_ObjectHideFlags: 0
@@ -7452,7 +7601,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1120128633
 MonoBehaviour:
@@ -7488,7 +7637,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1120128635
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7503,6 +7652,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1120128636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120128628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1126856974
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,7 +7939,6 @@ GameObject:
   - component: {fileID: 1176130516}
   - component: {fileID: 1176130515}
   - component: {fileID: 1176130519}
-  - component: {fileID: 1176130520}
   m_Layer: 0
   m_Name: StaticObstacle (2)
   m_TagString: Untagged
@@ -7792,7 +7954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176130513}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -1, y: 1.26, z: 96}
+  m_LocalPosition: {x: -3.3, y: 1.26, z: 82}
   m_LocalScale: {x: 30, y: 30, z: 40}
   m_Children: []
   m_Father: {fileID: 1451804894}
@@ -7888,22 +8050,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!54 &1176130520
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176130513}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &1181816387
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,7 +8441,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 1264208034}
-  cooldown: -2881.226
+  cooldown: -3385.9219
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -8591,6 +8737,7 @@ GameObject:
   - component: {fileID: 1307194901}
   - component: {fileID: 1307194900}
   - component: {fileID: 1307194902}
+  - component: {fileID: 1307194906}
   m_Layer: 0
   m_Name: Girl (3)
   m_TagString: Opponent
@@ -8661,7 +8808,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1307194903
 MonoBehaviour:
@@ -8697,7 +8844,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1307194905
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8712,6 +8859,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1307194906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307194898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1309128328
 GameObject:
   m_ObjectHideFlags: 0
@@ -8898,7 +9059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329338505}
   m_LocalRotation: {x: 0.19623078, y: -0, z: -0, w: 0.98055774}
-  m_LocalPosition: {x: 1.5956304, y: 2.8526592, z: -135.91142}
+  m_LocalPosition: {x: 1.5956304, y: 2.8526592, z: -136.91142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534723017}
@@ -9617,6 +9778,7 @@ Transform:
   - {fileID: 1442119501}
   - {fileID: 1956700969}
   - {fileID: 1264208030}
+  - {fileID: 1024534495}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9694,7 +9856,6 @@ GameObject:
   - component: {fileID: 1442119504}
   - component: {fileID: 1442119503}
   - component: {fileID: 1442119502}
-  - component: {fileID: 1442119505}
   m_Layer: 0
   m_Name: FinishPlatform
   m_TagString: Finish
@@ -9778,22 +9939,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442119500}
   m_Mesh: {fileID: -9026691190347106219, guid: 1b2f2a69558a49a49b54fe2c74b6d974, type: 3}
---- !u!54 &1442119505
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442119500}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1451804893
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,7 +9954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1451804894
 Transform:
   m_ObjectHideFlags: 0
@@ -9828,7 +9973,7 @@ Transform:
   - {fileID: 1176130514}
   - {fileID: 1732501579}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465971786
 GameObject:
@@ -9845,6 +9990,7 @@ GameObject:
   - component: {fileID: 1465971789}
   - component: {fileID: 1465971788}
   - component: {fileID: 1465971790}
+  - component: {fileID: 1465971794}
   m_Layer: 0
   m_Name: Girl (4)
   m_TagString: Opponent
@@ -9915,7 +10061,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1465971791
 MonoBehaviour:
@@ -9951,7 +10097,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1465971793
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9966,6 +10112,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1465971794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465971786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1468732117
 GameObject:
   m_ObjectHideFlags: 0
@@ -10668,7 +10828,7 @@ GameObject:
   - component: {fileID: 1573253711}
   m_Layer: 0
   m_Name: RotatorRight
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10681,7 +10841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573253705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.7, z: 16}
+  m_LocalPosition: {x: -3, y: 0.7, z: 54}
   m_LocalScale: {x: 27, y: 20, z: 27}
   m_Children:
   - {fileID: 1719778527}
@@ -11273,6 +11433,7 @@ GameObject:
   - component: {fileID: 1675430050}
   - component: {fileID: 1675430049}
   - component: {fileID: 1675430051}
+  - component: {fileID: 1675430055}
   m_Layer: 0
   m_Name: Girl (2)
   m_TagString: Opponent
@@ -11343,7 +11504,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1675430052
 MonoBehaviour:
@@ -11379,7 +11540,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1675430054
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11394,6 +11555,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1675430055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675430047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1678551782
 GameObject:
   m_ObjectHideFlags: 0
@@ -11504,7 +11679,6 @@ GameObject:
   - component: {fileID: 1686533846}
   - component: {fileID: 1686533845}
   - component: {fileID: 1686533844}
-  - component: {fileID: 1686533850}
   m_Layer: 0
   m_Name: HorizontalObstacle
   m_TagString: Untagged
@@ -11636,22 +11810,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686533842}
   m_Mesh: {fileID: -8836696378809578477, guid: 6f1ba453429950944a3bef8381feb9e9, type: 3}
---- !u!54 &1686533850
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686533842}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &1689135739
 GameObject:
   m_ObjectHideFlags: 0
@@ -11761,11 +11919,11 @@ GameObject:
   - component: {fileID: 1710517433}
   m_Layer: 0
   m_Name: RotatorLeft
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1710517428
 Transform:
   m_ObjectHideFlags: 0
@@ -11774,7 +11932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710517427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 0.7, z: 16}
+  m_LocalPosition: {x: 3, y: 0.7, z: 16}
   m_LocalScale: {x: 27, y: 20, z: 27}
   m_Children:
   - {fileID: 950243949}
@@ -11897,7 +12055,7 @@ GameObject:
   - component: {fileID: 1711596549}
   m_Layer: 0
   m_Name: RotatingStick (1)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12054,7 +12212,7 @@ GameObject:
   - component: {fileID: 1719778532}
   m_Layer: 0
   m_Name: RotatingStick
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12208,7 +12366,6 @@ GameObject:
   - component: {fileID: 1732501581}
   - component: {fileID: 1732501580}
   - component: {fileID: 1732501584}
-  - component: {fileID: 1732501585}
   m_Layer: 0
   m_Name: StaticObstacle (3)
   m_TagString: Untagged
@@ -12224,7 +12381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732501578}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3, y: 1.26, z: 24}
+  m_LocalPosition: {x: -3.3, y: 1.26, z: 32}
   m_LocalScale: {x: 30, y: 30, z: 40}
   m_Children: []
   m_Father: {fileID: 1451804894}
@@ -12320,22 +12477,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!54 &1732501585
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732501578}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &1736308139
 GameObject:
   m_ObjectHideFlags: 0
@@ -12413,13 +12554,14 @@ GameObject:
   - component: {fileID: 1737357675}
   - component: {fileID: 1737357674}
   - component: {fileID: 1737357676}
+  - component: {fileID: 1737357680}
   m_Layer: 0
   m_Name: Girl (7)
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1737357673
 Transform:
   m_ObjectHideFlags: 0
@@ -12483,7 +12625,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1737357677
 MonoBehaviour:
@@ -12519,7 +12661,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1737357679
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12534,6 +12676,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1737357680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737357672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1748844487
 GameObject:
   m_ObjectHideFlags: 0
@@ -12549,13 +12705,14 @@ GameObject:
   - component: {fileID: 1748844490}
   - component: {fileID: 1748844489}
   - component: {fileID: 1748844491}
+  - component: {fileID: 1748844495}
   m_Layer: 0
   m_Name: Girl (8)
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1748844488
 Transform:
   m_ObjectHideFlags: 0
@@ -12619,7 +12776,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1748844492
 MonoBehaviour:
@@ -12655,7 +12812,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &1748844494
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12670,6 +12827,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &1748844495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748844487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &1750291100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12996,7 +13167,7 @@ GameObject:
   - component: {fileID: 1773983547}
   m_Layer: 0
   m_Name: RotatingStick (1)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13465,14 +13636,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817361425}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 57}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.25, z: 86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 210091343}
   m_Father: {fileID: 1451804894}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1822339193
 GameObject:
   m_ObjectHideFlags: 0
@@ -13558,7 +13729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830416958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1.25, z: 7}
+  m_LocalPosition: {x: -4, y: 1.25, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2445297848600049834}
@@ -13612,7 +13783,7 @@ GameObject:
   - component: {fileID: 1841407596}
   m_Layer: 0
   m_Name: RotatingStick (2)
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14098,7 +14269,7 @@ GameObject:
   - component: {fileID: 1881938227}
   m_Layer: 0
   m_Name: Half_Donut
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14111,7 +14282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881938225}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7, y: 1.2, z: 23.79}
+  m_LocalPosition: {x: 4.7, y: 1.2, z: 32}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 577310897}
@@ -14185,7 +14356,7 @@ GameObject:
   - component: {fileID: 1895693123}
   m_Layer: 0
   m_Name: RotatingStick
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14607,7 +14778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1917054384
 MonoBehaviour:
@@ -14827,7 +14998,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949527424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14837,7 +15008,7 @@ Transform:
   - {fileID: 2091021081}
   - {fileID: 283905336}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949712980
 GameObject:
@@ -15533,6 +15704,7 @@ GameObject:
   - component: {fileID: 2030244796}
   - component: {fileID: 2030244795}
   - component: {fileID: 2030244797}
+  - component: {fileID: 2030244801}
   m_Layer: 0
   m_Name: Girl (5)
   m_TagString: Opponent
@@ -15603,7 +15775,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &2030244798
 MonoBehaviour:
@@ -15639,7 +15811,7 @@ NavMeshAgent:
   m_Height: 2.21
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &2030244800
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15654,6 +15826,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2395300767548323527, guid: 40e6da8f79aad664781f317979db4de4, type: 3}
+--- !u!114 &2030244801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030244793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &2050853383
 GameObject:
   m_ObjectHideFlags: 0
@@ -15826,7 +16012,7 @@ GameObject:
   - component: {fileID: 2091021086}
   m_Layer: 0
   m_Name: RotatorLeft2
-  m_TagString: Untagged
+  m_TagString: BonusObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16434,7 +16620,6 @@ GameObject:
   - component: {fileID: 3072758814611956243}
   - component: {fileID: 3072758814611956242}
   - component: {fileID: 3072758814611956244}
-  - component: {fileID: 3072758814611956245}
   m_Layer: 0
   m_Name: HorizontalObstacle
   m_TagString: Untagged
@@ -16503,22 +16688,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!54 &3072758814611956245
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3072758814611956240}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!4 &3150793068723565206
 Transform:
   m_ObjectHideFlags: 0
@@ -16892,6 +17061,7 @@ GameObject:
   - component: {fileID: 4683662404435042555}
   - component: {fileID: 4683662404435042557}
   - component: {fileID: 4683662404435042551}
+  - component: {fileID: 4683662404435042558}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Player
@@ -17011,6 +17181,20 @@ NavMeshAgent:
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4683662404435042558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683662404435042550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d4a23ed51036d45b6e3603494440cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  EndLineTransform: {fileID: 1024534495}
 --- !u!1 &4695399631225510670
 GameObject:
   m_ObjectHideFlags: 0
@@ -17066,7 +17250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4683662404435042550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2519714010813628286}

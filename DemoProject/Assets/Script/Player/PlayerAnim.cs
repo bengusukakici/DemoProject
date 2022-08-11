@@ -30,18 +30,17 @@ public class PlayerAnim : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
-            Debug.Log("restart");
-            transform.localPosition = new Vector3(0, 0, 0);
+            transform.position = new Vector3(0, 0, 0);
             gameObject.GetComponent<PlayerMovement>().enabled = true;
             gameObject.GetComponent<MeshCollider>().enabled = true;
         }
         if (gameObject.CompareTag("Opponent"))
         {
-            Debug.Log("restart");
-            transform.localPosition = new Vector3(Random.Range(-4,4), 0, 0);
             gameObject.GetComponent<NavMesh>().enabled = true;
             gameObject.GetComponent<MeshCollider>().enabled = true;
-            gameObject.GetComponent<NavMeshAgent>().speed = 4; 
+            gameObject.GetComponent<NavMeshAgent>().speed = 4;
+            transform.localPosition = new Vector3(Random.Range(-4, 4), 0, 0);
+            //Debug.Log(transform.localPosition.z);
         }
     }
 }
