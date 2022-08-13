@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
     }
     public void StartPanel()
     {
+        Time.timeScale = 1;
         startPanel.SetActive(true);
         playerMovement.enabled = false;
         foreach (NavMesh script in GameManager.instance.opponentScript)

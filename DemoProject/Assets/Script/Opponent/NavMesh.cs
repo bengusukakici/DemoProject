@@ -22,6 +22,7 @@ public class NavMesh : MonoBehaviour
         isRotator = false;
         isRotatingLeft = false;
         isRotatingRight = false;
+        GameManager.instance.navmesh = true;
         GameManager.instance.opponentScript.Add(this);
         animation = GetComponent<PlayerAnim>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -38,7 +39,6 @@ public class NavMesh : MonoBehaviour
     {
         if (!isFinish)
         {
-            Debug.Log("finish");
             navMeshAgent.SetDestination(target);
         }
         else StopCoroutine(NavMeshControl());
@@ -71,7 +71,6 @@ public class NavMesh : MonoBehaviour
             isFinish = true;
             isRotator = true;
             animation.stoprun();
-            //
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -136,7 +135,7 @@ public class NavMesh : MonoBehaviour
         transform.DOMoveY(-5f, 0.7f).OnComplete(() =>{
             StopCoroutine(NavMeshControlRotator());
             navMeshAgent.enabled = false;
-            GameManager.instance.player.Remove(playerOrder);
+            GameManager.instance.order -=1;
             gameObject.SetActive(false);
         });
         

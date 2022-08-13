@@ -14,6 +14,10 @@ public class InputManager : MonoBehaviour
     private float _moveFactorY;
     public float MoveFactorY => _moveFactorY;
 
+
+    private void Start()
+    {
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

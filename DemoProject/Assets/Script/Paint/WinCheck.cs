@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WinCheck : MonoBehaviour
 {
-
+    int orderCount;
 
     [SerializeField] private Image fill;
 
@@ -16,13 +16,13 @@ public class WinCheck : MonoBehaviour
 
     void Update()
     {
-        if (fill.fillAmount >= 0.98f)
+        if (fill.fillAmount >= 0.99f)
         {
             LevelManager.Instance.LevelComplete();
         }
-        if(GameManager.instance.player.Count <= 1)
+        orderCount = GameManager.instance.player.Count + GameManager.instance.order;
+        if (orderCount <= 1 && GameManager.instance.navmesh)
         {
-            Debug.Log("Win");
             LevelManager.Instance.LevelComplete();
         }
 

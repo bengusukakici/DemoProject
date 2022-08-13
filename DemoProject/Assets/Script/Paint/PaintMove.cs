@@ -25,11 +25,11 @@ public class PaintMove : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            transform.DOMoveZ(133.5f, 0.5f);
+            transform.DOMoveZ(124.4f, 0.5f);
         }
         if (Input.GetMouseButtonUp(0))
         {
-            transform.DOMoveZ(131, 0.5f);
+            transform.DOMoveZ(120, 0.5f);
         }
         #region Swerwe Movement
         var pos = transform.localPosition;

@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isRotator)
         {
-            UIManager.Instance.orderText.text = GameManager.instance.player.Count.ToString() + ".";
+            UIManager.Instance.orderText.text = (GameManager.instance.player.Count + GameManager.instance.order) + ".";
             
         }
     }
@@ -126,17 +126,11 @@ public class PlayerMovement : MonoBehaviour
         pos.x = Mathf.Clamp(transform.localPosition.x, -5, 5);
         transform.localPosition = pos;
         transform.Translate(swerveAmount, 0, 0);
-
-        // Vector3 targetPosition = transform.position + new Vector3(swerveInputSystem.MoveFactorX, 0,0);
-        //transform.LookAt(targetPosition);
         #endregion
 
         if (Input.GetMouseButton(0))
         {
-            target = new Vector3(swerveAmount, transform.position.y, transform.position.z);
             transform.Translate(Vector3.forward * Time.deltaTime * _inputData.speed);
-            //navMeshAgent.SetDestination(-target);
-
             animation.run();
         }
         else
@@ -144,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
             animation.stoprun();
         }
     }
+
     void MovementJoystick()
     {
         if (Input.GetMouseButton(0))

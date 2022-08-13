@@ -7,12 +7,11 @@ public class OrderManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PlayerOrder", 0.00f, 0.001f);
-        
+       
     }
-
     void Update()
     {
-        UpdatePlayerOrder();
+        InvokeRepeating("UpdatePlayerOrder", 0.00f, 0.001f);
         DistanceSort();
         
     }
@@ -31,6 +30,8 @@ public class OrderManager : MonoBehaviour
         {
             GameManager.instance.distance[i] = GameManager.instance.player[i].GetDistance();
         }
+
+        CancelInvoke("UpdatePlayerOrder");
     }
     public void DistanceSort()
     {

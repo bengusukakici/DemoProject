@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
     public bool isPaintFinish;
     public bool isFinishLine;
     public bool isFinish;
-
+    public bool navmesh;
+    public int order;
     PlayerMovement playerMovement;
     PlayerAnim animation;
 
     private void Awake()
     {
         opponentScript = new List<NavMesh>();
-        player = new List<PlayerOrder>();
         distance = new List<float>();
+        player = new List<PlayerOrder>();
         if (instance == null)
         {
             instance = this;
@@ -33,8 +34,10 @@ public class GameManager : MonoBehaviour
         isPaintFinish = false;
         isFinishLine = false;
         isFinish = false;
+        navmesh = false;
         playerMovement = character.GetComponent<PlayerMovement>();
         animation = character.GetComponent<PlayerAnim>();
+        
     }
 
     void Update()
@@ -46,5 +49,4 @@ public class GameManager : MonoBehaviour
         }
         UIManager.Instance.Order();
     }
-
 }

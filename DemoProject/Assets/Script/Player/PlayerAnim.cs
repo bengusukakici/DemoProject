@@ -17,10 +17,6 @@ public class PlayerAnim : MonoBehaviour
     public void run()
     {
         animator.SetBool("isRun", true);
-        if (gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player koþacak");
-        }
     }
     public void stoprun()
     {

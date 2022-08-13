@@ -27,18 +27,11 @@ public class LevelManager : MonoBehaviour
     }
     void Awake()
     {
-        Time.timeScale = 1;
         instance = this;
         levelSettings = Resources.Load<LevelSettings>("LevelSettings");
         lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
         _tryNum = PlayerPrefs.GetInt("tryNum", 1);
         _isFirstLevelFirstlyCompleted = PlayerPrefs.GetInt("firstLevelCompleted", 0);
-    }
-
-
-    private void Start()
-    {
-        LevelStart();
     }
 
     public void LevelComplete()
@@ -63,17 +56,9 @@ public class LevelManager : MonoBehaviour
         //StartCoroutine(AsyncSceneLoader(SceneManager.GetActiveScene().buildIndex));
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
-    void LevelPause()
-    {
-
-    }
-    void LevelStart()
-    {
-
-    }
-
     public void NextLevel()
     {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync(levelSettings.LevelArray[(lastLevel % levelSettings.levelCount)]);
         lastLevel++;
         PlayerPrefs.SetInt("lastLevel", lastLevel);
