@@ -27,13 +27,13 @@ public class UIManager : MonoBehaviour
 
 
     [Header("Start Panel")]
-    [SerializeField] private GameObject startPanel;
+    [SerializeField] public GameObject startPanel;
     [SerializeField] private GameObject startButton;
 
     [Header("In Game Panel")]
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI orderText;
+    [SerializeField] public TextMeshProUGUI orderText;
     [SerializeField] private GameObject pie;
     [SerializeField] private GameObject joystick;
 
@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     PlayerMovement playerMovement;
     PlayerOrder playerorder;
+    int order;
 
     private void Awake()
     {
@@ -73,28 +74,26 @@ public class UIManager : MonoBehaviour
         }
         InvokeRepeating("StartPanel", 0.00f, 0.001f);
     }
-    public void Update()
+    public void FixedUpdate()
     {
         ScaleButton(startButton);
         ScaleButton(nextButton);
         ScaleButton(failButton);
-        if (GameManager.instance.isFinish)
+        if (GameManager.instance.isPaintFinish)
         {
             pie.SetActive(true);
         }
-        if (GameManager.instance.isRotatingPlatform)
+        if (GameManager.instance.isFinish)
         {
             joystick.SetActive(true);
         }
-        Order();
     }
     public void StartPanel()
     {
         startPanel.SetActive(true);
         playerMovement.enabled = false;
-        foreach(NavMesh script in GameManager.instance.opponentScript)
+        foreach (NavMesh script in GameManager.instance.opponentScript)
         {
-
             script.animation.stoprun();
             script.enabled = false;
             script.GetComponentInParent<NavMeshAgent>().enabled = false;
@@ -104,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void StartLevel()
     {
         startPanel.SetActive(false);
-        playerMovement.enabled = true; 
+        playerMovement.enabled = true;
         foreach (NavMesh script in GameManager.instance.opponentScript)
         {
             script.animation.run();
@@ -112,7 +111,7 @@ public class UIManager : MonoBehaviour
             script.GetComponentInParent<NavMeshAgent>().enabled = true;
         }
     }
-    
+
     public void NextLevel()
     {
         LevelManager.Instance.NextLevel();
@@ -121,11 +120,7 @@ public class UIManager : MonoBehaviour
     {
         LevelManager.Instance.LevelRestart();
     }
-    
-    public void OpenStore()
-    {
 
-    }
     void ScaleButton(GameObject button)
     {
         float t = Time.time * buttonScaleAnimationSpeed;
@@ -133,17 +128,13 @@ public class UIManager : MonoBehaviour
     }
     public void Order()
     {
-        if (GameManager.instance.isFinishLine)
+        if (!GameManager.instance.isFinishLine)
         {
-
+            order = GameManager.instance.distance.BinarySearch(playerorder.GetDistance()) + 1;
+            if (order > 0)
+            {
+                orderText.text = order.ToString() + ".";
+            }
         }
-        else
-        {
-            Debug.Log(GameManager.instance.isFinishLine);
-            orderText.text = (GameManager.instance.distance.BinarySearch(playerorder.GetDistance()) + 1).ToString();
-        }
-
-        
     }
-
 }

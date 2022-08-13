@@ -16,11 +16,11 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isFinish)
+        if (GameManager.instance.isPaintFinish)
         {
             animator.Play("Cam02");
         }
-        if (!GameManager.instance.isFinish)
+        if (!GameManager.instance.isPaintFinish)
         {
             animator.Play("Cam01");
         }

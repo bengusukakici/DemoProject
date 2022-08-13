@@ -6,16 +6,6 @@ using UnityEngine.AI;
 
 public class Obstacle : MonoBehaviour
 {
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
     private void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.GetComponent<PlayerAnim>().fall();
@@ -31,9 +21,7 @@ public class Obstacle : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Opponent"))
         {
-            //Debug.Log("çarpýþma");
-            collision.gameObject.GetComponent<NavMesh>().enabled = false;
-            collision.gameObject.GetComponent<NavMeshAgent>().speed = 0;
+            collision.gameObject.GetComponent<NavMeshAgent>().updatePosition = false;
             collision.gameObject.GetComponent<MeshCollider>().enabled = false;
         }
     }

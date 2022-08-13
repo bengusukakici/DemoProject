@@ -17,6 +17,10 @@ public class PlayerAnim : MonoBehaviour
     public void run()
     {
         animator.SetBool("isRun", true);
+        if (gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player koþacak");
+        }
     }
     public void stoprun()
     {
@@ -36,11 +40,10 @@ public class PlayerAnim : MonoBehaviour
         }
         if (gameObject.CompareTag("Opponent"))
         {
-            gameObject.GetComponent<NavMesh>().enabled = true;
-            gameObject.GetComponent<MeshCollider>().enabled = true;
-            gameObject.GetComponent<NavMeshAgent>().speed = 4;
             transform.localPosition = new Vector3(Random.Range(-4, 4), 0, 0);
-            //Debug.Log(transform.localPosition.z);
+            GetComponent<NavMeshAgent>().nextPosition = transform.position;
+            gameObject.GetComponent<NavMeshAgent>().updatePosition = true;
+            gameObject.GetComponent<MeshCollider>().enabled = true;
         }
     }
 }

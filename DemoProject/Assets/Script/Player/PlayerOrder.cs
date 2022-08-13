@@ -15,19 +15,13 @@ public class PlayerOrder : MonoBehaviour
         playerTransform = gameObject.transform;
         endLinePosition = EndLineTransform.position;
     }
-
     void Start()
     {
         GameManager.instance.player.Add(this);
-    }
-    void Update()
-    {
-        
     }
     public float GetDistance()
     {
         return (endLinePosition - playerTransform.position).sqrMagnitude;
     }
 
-   
 }

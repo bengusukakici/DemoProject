@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
     public List<NavMesh> opponentScript;
     public List<PlayerOrder> player;
     public List<float> distance;
-    public bool isFinish;
+    public bool isPaintFinish;
     public bool isFinishLine;
-    public bool isRotatingPlatform;
+    public bool isFinish;
+
     PlayerMovement playerMovement;
     PlayerAnim animation;
 
@@ -29,21 +30,21 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        isFinish = false;
+        isPaintFinish = false;
         isFinishLine = false;
-        isRotatingPlatform = false;
+        isFinish = false;
         playerMovement = character.GetComponent<PlayerMovement>();
         animation = character.GetComponent<PlayerAnim>();
     }
 
     void Update()
     {
-        if (isFinish)
+        if (isPaintFinish)
         {
             playerMovement.enabled = false;
             animation.stoprun();
         }
-       
+        UIManager.Instance.Order();
     }
 
 }

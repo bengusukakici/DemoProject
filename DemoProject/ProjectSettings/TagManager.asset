@@ -9,6 +9,10 @@ TagManager:
   - Opponent
   - BonusObstacle
   - FinishLine
+  - PaintFinish
+  - Left
+  - Right
+  - Fall
   layers:
   - Default
   - TransparentFX
